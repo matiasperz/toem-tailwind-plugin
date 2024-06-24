@@ -1,0 +1,19 @@
+{
+  "name": "toem-tailwind-plugin",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "yarn changeset publish"
+  },
+  "keywords": ["tailwind", "toem", "em"],
+  "author": "@matiasperz",
+  "license": "ISC",
+  "devDependencies": {
+    "@changesets/cli": "^2.27.5"
+  }
+}
