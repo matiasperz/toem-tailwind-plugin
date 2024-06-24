@@ -3,9 +3,11 @@ I Highly recommend installing the [Tailwind IntelliSense plugin for VSCode](http
 
 ## How to use it?
 
-Targeting 13px on a base of 16px will result in `13px/16px = 0,8125em`.
+Targeting 13px on a base of 16px will result in `13px/16px = 0.8125em`.
 ```html
-<div class="text-base">
+<div class="flex gap-x-em-[24/16] text-base">
+  <img class="size-em-[32/16]" src="..." alt="profile pic" />
+
   <p class="text-em-[13/16]">
     Lorem Ipsum
   </p>
