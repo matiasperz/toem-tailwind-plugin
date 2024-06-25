@@ -10,10 +10,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "yarn changeset publish"
   },
-  "keywords": ["tailwind", "toem", "em"],
+  "keywords": [
+    "tailwind",
+    "toem",
+    "em"
+  ],
   "author": "@matiasperz",
   "license": "ISC",
   "devDependencies": {
-    "@changesets/cli": "^2.27.5"
+    "@changesets/cli": "^2.27.5",
+    "tailwindcss": "^3.4.4"
   }
 }

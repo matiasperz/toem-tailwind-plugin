@@ -1,34 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+const Quote = () => {
+  return (
+<>
+{/* A tailwind quote component quoting steve jobs */}
+<div className="flex flex-col items-start justify-center p-em-[24/16] mx-auto space-y-4 border max-w-max rounded-xl border-zinc-900">
+        <div className="flex flex-col items-center space-y-em-[16/16] md:flex-row md:space-y-em-[0/1] md:space-x-em-[16/16]">
+          <img
+            src="https://dummyimage.com/64x64/fff/000"
+            alt="Steve Jobs"
+            width={64}
+            height={64}
+            className="w-em-[64/16] rounded-full"
+          />
+          <div>
+            <blockquote className="text-em-[24/16] font-medium leading-tight">
+              "The only way to do great work is to love what you do."
+            </blockquote>
+            <div className="flex items-center gap-x-em-[8/16]">
+              <div className="font-medium">Steve Jobs</div>
+              <div className="text-gray-500 dark:text-gray-400">
+                Co-founder, Apple
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</>
+  )
+}
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='flex flex-col gap-y-6 leading-none'>
+      <div className='text-xs space-y-4'>
+        <p>Extra Small</p>
+        <Quote />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+       <div className='text-sm space-y-4'>
+        <p>Small</p>
+        <Quote />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <div className='text-base space-y-4'>
+        <p>Base</p>
+        <Quote />
+      </div>
+      <div className='text-lg space-y-4'>
+        <p>Large</p>
+        <Quote />
+      </div>
+    </div>
   )
 }
 

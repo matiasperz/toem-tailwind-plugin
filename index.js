@@ -53,9 +53,14 @@ const DYNAMIC_PROPS = [
   ['top', 'top'],
   ['bottom', 'bottom'],
   ['gap', 'gap'],
+  ['gap-x', 'column-gap'],
+  ['gap-y', 'row-gap'],
   ['inset', ['top', 'right', 'bottom', 'left']],
   ['inset-x', ['left', 'right']],
-  ['inset-y', ['top', 'bottom']]
+  ['inset-y', ['top', 'bottom']],
+  /* TODO: This could be a function that receives the value so we can do complex calcs in it. */
+  ['space-y', { selector: ':where(& > :not(:last-child))', props: ['margin-bottom'] }],
+  ['space-x', { selector: ':where(& > :not(:last-child))', props: ['margin-right'] }]
 ]
 
 const toemTailwindPlugin = plugin(({ matchUtilities }) => {
@@ -63,20 +68,28 @@ const toemTailwindPlugin = plugin(({ matchUtilities }) => {
     matchUtilities(
       {
         [p[0] + '-em']: (v) => {
-          const result = DIVISION_REGEX.exec(v)
+          const divisionComps = DIVISION_REGEX.exec(v)
 
-          if (!result) {
+          const isConfig = typeof p[1] === 'object' && !Array.isArray(p[1])
+          const props = isConfig ? p[1].props : p[1]
+          const selector = isConfig ? p[1].selector : null
+
+          /* TODO: Improve this, p[1] is not allways the actual prop */
+          if (!divisionComps) {
+            return buildPropsObject(p[1], '/* toem() error: invalid division */')
+          }
+
+          const emValue = divisionComps[1] / divisionComps[2]
+
+          if (selector) {
             return {
-              [p[1]]: '/* toem() error: invalid division */'
+              [selector]: buildPropsObject(props, emValue + 'em')
             }
           }
 
-          const emValue = result[1] / result[2]
-
           return buildPropsObject(p[1], emValue + 'em')
         }
-      },
-      {}
+      }
     )
   })
 })
