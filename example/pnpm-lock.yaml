@@ -47,8 +47,8 @@ devDependencies:
     specifier: ^3.4.4
     version: 3.4.4
   toem-tailwind-plugin:
-    specifier: ^0.0.1
-    version: link:..
+    specifier: ^0.0.3
+    version: 0.0.3
   typescript:
     specifier: ^5.2.2
     version: 5.5.2
@@ -2280,6 +2280,10 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
+    dev: true
+
+  /toem-tailwind-plugin@0.0.3:
+    resolution: {integrity: sha512-76QSdorv1jzSjMI6z5+w+8dgyrToX6CgNFV1TVIH1PiOd2EWR6TXsGZFTYKa3s1hX/8maNHzLyp2hyYU3AA57Q==}
     dev: true
 
   /ts-api-utils@1.3.0(typescript@5.5.2):
