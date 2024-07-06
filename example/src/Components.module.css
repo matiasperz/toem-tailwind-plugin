@@ -5,3 +5,12 @@
 .sidebar-link.active {
   @apply border-white;
 }
+
+.viewport {
+  --base-viewport: 1512;
+  --base-size: 16;
+  --dynamic-base-size: calc(var(--base-size) / var(--base-viewport) * 100vw);
+  font-size: var(--dynamic-base-size);
+
+  @apply w-full;
+}
