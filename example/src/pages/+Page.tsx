@@ -1,10 +1,12 @@
-import { useCallback, useMemo, useState } from "react";
+import { Fragment, useCallback, useMemo, useState } from "react";
 import clsx from "clsx";
-import { CopyIcon, CheckIcon } from '@radix-ui/react-icons'
+import { CopyIcon, CheckIcon, ReaderIcon } from '@radix-ui/react-icons'
 
 import "./App.css";
 import s from './Components.module.css';
 import TailwindLogo from '../assets/tailwind.svg'
+import { useData } from "vike-react/useData";
+import { Readme } from "./Readme";
 
 export { Page }
 
@@ -16,8 +18,11 @@ const command = {
 
 const pkgManagers = Object.keys(command) as ('npm' | 'pnpm' | 'yarn')[];
 
+type Context = { readme: string }
+
 function Page() {
-  const [activeExample, setActiveExample] = useState('quotes')
+  const ctx = useData<Context>()
+  const [activeExample, setActiveExample] = useState('readme')
   const [pkgManager, setPkgManager] = useState<typeof pkgManagers[number]>('npm');
   const [isCopied, setIsCopied] = useState(0);
 
@@ -45,16 +50,31 @@ function Page() {
         </div>
         <ul className="flex flex-col px-4 py-3 gap-y-3">
           {[{
+            key: 'readme',
+            icon: <ReaderIcon className="inline-block h-[1em]" />,
+            label: 'Introduction',
+          }, {
             key: 'quotes',
             label: 'Scalable quote',
           }, {
             key: 'viewport',
             label: 'Fluid text',
-          }].map(({ key, label }) => {
+          }].map(({ key, label, icon }) => {
             return (
-              <li>
-                <button onClick={() => setActiveExample(key)} className={clsx(s['sidebar-link'], { [s['active']]: key === activeExample })}>{label}</button>
-              </li>
+              <Fragment key={key}>
+                <li>
+                  <button onClick={() => setActiveExample(key)} className={clsx(s['sidebar-link'], { [s['active']]: key === activeExample })}>
+                    {icon} {label}
+                  </button>
+                </li>
+                {
+                  key === 'readme' ? (
+                    <li className="pb-1 pl-2 border-b border-zinc-900">
+                      <span className="text-sm">EXAMPLES</span>
+                    </li>
+                  ) : <></>
+                }
+              </Fragment>
             )
           })}
         </ul>
@@ -69,7 +89,7 @@ function Page() {
               <option value="yarn">yarn</option>
             </select>
 
-            <button onClick={onCopy} className={clsx(s["copy-button"], {
+            <button disabled={Boolean(isCopied)} onClick={onCopy} className={clsx(s["copy-button"], {
               [s['copy-button-copied']]: isCopied
             })}>
               <CopyIcon width={16} height={16} />
@@ -77,12 +97,15 @@ function Page() {
             </button>
           </div>
 
-          <div className="inline-flex w-full px-4 py-3 border-t border-white/5 bg-zinc-900 items-bottom">
+          <button disabled={Boolean(isCopied)} onClick={onCopy} className={clsx("relative overflow-hidden inline-flex w-full px-4 py-3 border-t border-white/5 bg-zinc-900 items-bottom")}>
+            <div className={clsx(s['install-command-bg'], {
+              [s['install-command-bg-copied']]: isCopied
+            })} />
             <code className="inline-block">
               {'>'} {command[pkgManager]}
             </code>
             <span className="h-em-[20/16] bg-current align-middle inline-block w-em-[10/16] animate-caret ml-em-[6/16]">{' '}</span>
-          </div>
+          </button>
         </div>
       </div>
 
@@ -139,6 +162,14 @@ function Page() {
               </div>
             </div>
           ) : (<></>)
+        }
+
+        {
+          activeExample === 'readme' ? (
+            <div className="markdown-body">
+              <Readme content={ctx.readme} />
+            </div>
+          ) : <></>
         }
       </div>
 

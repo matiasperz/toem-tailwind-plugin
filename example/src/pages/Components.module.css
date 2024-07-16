@@ -1,5 +1,5 @@
 .sidebar-link {
-  @apply text-base cursor-pointer w-full block text-white font-normal px-em-[12/16] py-em-[8/16] border border-zinc-900 bg-white/5 rounded-em-[8/16];
+  @apply text-base cursor-pointer flex justify-center gap-x-em-[8/16] items-center w-full text-white font-normal px-em-[12/16] py-em-[8/16] border border-zinc-900 bg-white/5 rounded-em-[8/16];
 }
 
 .sidebar-link.active {
@@ -29,6 +29,17 @@
         animation: show 1250ms forwards 150ms;
       }
     }
+  }
+}
+
+.install-command-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 30%, #ffffff10 45%, #ffffff10 55%, transparent 70%);
+  transform: translateX(-100%);
+
+  &.install-command-bg-copied {
+    animation: install-command-bg 1000ms none ease-out;
   }
 }
 
@@ -91,3 +102,17 @@
   }
 }
 
+@keyframes install-command-bg {
+  0% {
+    transform: translateX(-100%) scale(1);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(150%) scale(1.5);
+  } 
+}
