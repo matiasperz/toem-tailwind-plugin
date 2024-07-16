@@ -1,17 +1,41 @@
+import { useCallback, useMemo, useState } from "react";
 import clsx from "clsx";
+import { CopyIcon, CheckIcon } from '@radix-ui/react-icons'
+
 import "./App.css";
 import s from './Components.module.css';
 import TailwindLogo from '../assets/tailwind.svg'
-import { useState } from "react";
 
 export { Page }
 
+const command = {
+  npm: 'npm install toem-tailwind-plugin',
+  pnpm: 'pnpm install toem-tailwind-plugin',
+  yarn: 'yarn add toem-tailwind-plugin',
+}
+
+const pkgManagers = Object.keys(command) as ('npm' | 'pnpm' | 'yarn')[];
+
 function Page() {
   const [activeExample, setActiveExample] = useState('quotes')
+  const [pkgManager, setPkgManager] = useState<typeof pkgManagers[number]>('npm');
+  const [isCopied, setIsCopied] = useState(0);
+
+  const copyValue = useMemo(() => {
+    return command[pkgManager];
+  }, [pkgManager]);
+
+  const onCopy = useCallback(() => {
+    setIsCopied((c) => c + 1);
+    void navigator.clipboard.writeText(copyValue);
+    setTimeout(() => {
+      setIsCopied((c) => c - 1);
+    }, 1400);
+  }, [copyValue]);
 
   return (
     <div className="grid min-h-screen w-full grid-cols-[max-content_auto]">
-      <div className="sticky flex flex-col top-0 left-0 h-screen min-w-[345px] w-[20vw] border-r border-zinc-900">
+      <div className="sticky flex flex-col top-0 left-0 h-screen min-w-[350px] w-[20vw] border-r border-zinc-900">
         <div className="px-4 py-3 border-b border-zinc-900">
           <p className="text-lg font-medium">
             <span className="inline-flex items-center justify-center mr-2 border rounded-full bg-white/5 size-10 border-zinc-900">
@@ -26,33 +50,39 @@ function Page() {
           }, {
             key: 'viewport',
             label: 'Fluid text',
-          }].map(({key, label}) => {
+          }].map(({ key, label }) => {
             return (
               <li>
-                <button onClick={() => setActiveExample(key)} className={clsx(s['sidebar-link'], {[s['active']]: key === activeExample})}>{label}</button>
+                <button onClick={() => setActiveExample(key)} className={clsx(s['sidebar-link'], { [s['active']]: key === activeExample })}>{label}</button>
               </li>
             )
           })}
         </ul>
 
-        <div className="px-4 py-3 mt-auto text-sm border-t border-zinc-900">
-          <div className="flex justify-between pb-3">
-            <select className="px-em-[12/16] py-em-[4/16] rounded-em-[8/16]" name="" id="">
+        <div className="mt-auto text-sm border-t border-zinc-900">
+          <div className="flex justify-between px-3 py-2">
+            <select onChange={(e) => {
+              setPkgManager(e.target.value as 'npm' | 'pnpm' | 'yarn');
+            }} className="border-white/5 border px-em-[12/16] py-em-[4/16] rounded-em-[8/16]" name="" id="">
               <option value="npm">npm</option>
               <option value="pnpm">pnpm</option>
               <option value="yarn">yarn</option>
             </select>
 
-            <button className="inline-block px-em-[8/16] py-em-[4/16] rounded-em-[8/16] bg-zinc-900 text-white">
-              Copy
+            <button onClick={onCopy} className={clsx(s["copy-button"], {
+              [s['copy-button-copied']]: isCopied
+            })}>
+              <CopyIcon width={16} height={16} />
+              <CheckIcon width={20} height={20} />
             </button>
           </div>
-          <button className="inline-flex w-full items-bottom">
+
+          <div className="inline-flex w-full px-4 py-3 border-t border-white/5 bg-zinc-900 items-bottom">
             <code className="inline-block">
-              {'>'} npm install toem-tailwind-plugin
+              {'>'} {command[pkgManager]}
             </code>
             <span className="h-em-[20/16] bg-current align-middle inline-block w-em-[10/16] animate-caret ml-em-[6/16]">{' '}</span>
-          </button>
+          </div>
         </div>
       </div>
 
