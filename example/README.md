@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+# <img src="https://github.com/matiasperz/toem-tailwind-plugin/assets/43894343/14b223fb-2fc8-4ae9-93ef-ef0de74c921f" alt="Description of the image" style="width:44px; display:inline;"> To-EM Tailwind Plugin
+I Highly recommend installing the [Tailwind IntelliSense plugin for VSCode](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), it will display the result of the dynamic calculation.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## How to use it?
 
-Currently, two official plugins are available:
+Targeting 13px on a base of 16px will result in `13px/16px = 0.8125em`.
+```html
+<div class="flex items-center gap-x-em-[24/16] text-base">
+  <img class="size-em-[32/16]" src="..." alt="profile pic" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+  <p class="text-em-[13/16]">
+    Lorem Ipsum
+  </p>
+<div>
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
