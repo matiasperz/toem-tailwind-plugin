@@ -166,9 +166,7 @@ function Page() {
 
         {
           activeExample === 'readme' ? (
-            <div className="markdown-body">
-              <Readme content={ctx.readme} />
-            </div>
+            <Readme content={ctx.readme} />
           ) : <></>
         }
       </div>
