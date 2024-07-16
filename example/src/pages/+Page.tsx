@@ -69,8 +69,8 @@ function Page() {
                 </li>
                 {
                   key === 'readme' ? (
-                    <li className="pb-1 pl-2 border-b border-zinc-900">
-                      <span className="text-sm">EXAMPLES</span>
+                    <li className="pb-2 pl-2 mt-2 border-b border-zinc-900">
+                      <span className="text-sm leading-none">EXAMPLES</span>
                     </li>
                   ) : <></>
                 }
