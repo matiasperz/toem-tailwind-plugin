@@ -4,7 +4,7 @@ import path from 'path'
 import fs from 'fs'
 
 async function data() {
-  const p = path.join(process.cwd(), '../README.md')
+  const p = path.join(process.cwd(), './README.md')
 
   const readme = fs.readFileSync(p, 'utf-8')
 
