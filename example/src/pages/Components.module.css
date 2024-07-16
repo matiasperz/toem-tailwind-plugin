@@ -1,5 +1,5 @@
 .sidebar-link {
-  @apply text-base cursor-pointer block text-white font-normal px-em-[12/16] py-em-[8/16] border border-zinc-900 bg-white/5 rounded-em-[8/16];
+  @apply text-base cursor-pointer w-full block text-white font-normal px-em-[12/16] py-em-[8/16] border border-zinc-900 bg-white/5 rounded-em-[8/16];
 }
 
 .sidebar-link.active {

@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import "./App.css";
 import s from './Components.module.css';
-
 import TailwindLogo from '../assets/tailwind.svg'
 import { useState } from "react";
 
@@ -21,12 +20,19 @@ function Page() {
             <code className="inline-block">to-em</code> plugin</p>
         </div>
         <ul className="flex flex-col px-4 py-3 gap-y-3">
-          <li>
-            <button onClick={() => setActiveExample('quotes')} className={s['sidebar-link']}>Scalable quote</button>
-          </li>
-          <li>
-            <button onClick={() => setActiveExample('viewport')} className={clsx(s['sidebar-link'], s['active'])}>Fluid text</button>
-          </li>
+          {[{
+            key: 'quotes',
+            label: 'Scalable quote',
+          }, {
+            key: 'viewport',
+            label: 'Fluid text',
+          }].map(({key, label}) => {
+            return (
+              <li>
+                <button onClick={() => setActiveExample(key)} className={clsx(s['sidebar-link'], {[s['active']]: key === activeExample})}>{label}</button>
+              </li>
+            )
+          })}
         </ul>
 
         <div className="px-4 py-3 mt-auto text-sm border-t border-zinc-900">
@@ -50,9 +56,9 @@ function Page() {
         </div>
       </div>
 
-      <div className="flex flex-col p-10 leading-none gap-y-6">
+      <div className="flex flex-col items-center justify-center p-10 leading-none gap-y-6">
         {
-          activeExample === 'quotes' ? (<div>
+          activeExample === 'quotes' ? (<div className="flex flex-col gap-y-6">
             <div className="mx-auto space-y-4 text-xs max-w-max">
               <p className="px-em-[16/16]">Extra Small</p>
               <Quote />
