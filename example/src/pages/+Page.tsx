@@ -109,7 +109,7 @@ function Page() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center p-10 leading-none gap-y-6">
+      <div className="flex flex-col items-center justify-center p-10 leading-none gridbg gap-y-6">
         {
           activeExample === 'quotes' ? (<div className="flex flex-col gap-y-6">
             <div className="mx-auto space-y-4 text-xs max-w-max">
@@ -179,7 +179,7 @@ const Quote = () => {
   return (
     <>
       {/* A tailwind quote component quoting steve jobs */}
-      <div className="flex flex-col items-start justify-center p-em-[24/16] mx-auto space-y-4 border max-w-max rounded-xl border-zinc-900">
+      <div className="flex bg-black flex-col items-start justify-center p-em-[24/16] mx-auto space-y-4 border max-w-max rounded-xl border-zinc-900">
         <div className="flex flex-col items-center space-y-em-[16/16] md:flex-row md:space-y-em-[0/1] md:space-x-em-[16/16]">
           <img
             src="https://dummyimage.com/120x120/fff/000"

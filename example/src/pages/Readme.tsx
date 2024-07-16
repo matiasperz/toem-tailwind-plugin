@@ -13,7 +13,7 @@ const Readme = ({content}: {
   content: string
 }) => {
   return (
-    <div className="flex flex-col w-full h-full border rounded-xl border-zinc-900">
+    <div className="flex max-w-[1200px] flex-col w-full h-full bg-black border rounded-xl border-zinc-900">
       <header className="border-b border-zinc-900">
         <div className="inline-block px-4 py-3 border-r border-zinc-900">
           <h1 className="text-sm font-medium flex items-center gap-x-em-[8/16]">
