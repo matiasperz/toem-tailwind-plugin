@@ -1,4 +1,5 @@
 import Markdown from "react-markdown"
+import rehypeRaw from 'rehype-raw'
 
 export { Readme }
 
@@ -7,7 +8,7 @@ const Readme = ({content}: {
 }) => {
   return (
     <div>
-      <Markdown>
+      <Markdown rehypePlugins={[rehypeRaw]}>
         {content}
       </Markdown>
     </div>
