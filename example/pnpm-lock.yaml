@@ -34,6 +34,9 @@ dependencies:
     version: 0.4.17(react-dom@18.3.1)(react@18.3.1)(vike@0.4.179)(vite@5.3.1)
 
 devDependencies:
+  '@types/node':
+    specifier: ^20.14.10
+    version: 20.14.10
   '@types/react':
     specifier: ^18.3.3
     version: 18.3.3
@@ -75,7 +78,7 @@ devDependencies:
     version: 5.5.2
   vite:
     specifier: ^5.3.1
-    version: 5.3.1
+    version: 5.3.1(@types/node@20.14.10)
 
 packages:
 
@@ -1473,6 +1476,11 @@ packages:
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
     dev: false
 
+  /@types/node@20.14.10:
+    resolution: {integrity: sha512-MdiXf+nDuMvY0gJKxyfZ7/6UFsETO7mGKF54MVD/ekJS6HdFtpZFBgrh6Pseu64XTb2MLyFPlbW6hj8HYRQNOQ==}
+    dependencies:
+      undici-types: 5.26.5
+
   /@types/prop-types@15.7.12:
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
 
@@ -1636,7 +1644,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.24.7(@babel/core@7.24.7)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 5.3.1
+      vite: 5.3.1(@types/node@20.14.10)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3668,6 +3676,9 @@ packages:
     hasBin: true
     dev: true
 
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+
   /unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
     dependencies:
@@ -3799,7 +3810,7 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
       react-streaming: 0.3.42(react-dom@18.3.1)(react@18.3.1)
       vike: 0.4.179(vite@5.3.1)
-      vite: 5.3.1
+      vite: 5.3.1(@types/node@20.14.10)
     dev: false
 
   /vike@0.4.179(vite@5.3.1):
@@ -3826,10 +3837,10 @@ packages:
       semver: 7.6.2
       sirv: 2.0.4
       source-map-support: 0.5.21
-      vite: 5.3.1
+      vite: 5.3.1(@types/node@20.14.10)
     dev: false
 
-  /vite@5.3.1:
+  /vite@5.3.1(@types/node@20.14.10):
     resolution: {integrity: sha512-XBmSKRLXLxiaPYamLv3/hnP/KXDai1NDexN0FpkTaZXTfycHvkRHoenpgl/fvuK/kPbB6xAgoyiryAhQNxYmAQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -3857,6 +3868,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.14.10
       esbuild: 0.21.5
       postcss: 8.4.38
       rollup: 4.18.0
