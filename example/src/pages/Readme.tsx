@@ -1,11 +1,15 @@
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import rehypeHighlight from "rehype-highlight";
 import { ReaderIcon } from "@radix-ui/react-icons";
 import clsx from "clsx";
+
+import 'highlight.js/styles/github-dark.min.css';
 
 export { Readme };
 
 const proseBase = "prose prose-invert prose-zinc prose-blue";
+const prosePre = "prose-pre:p-0"
 const proseCode =
   "prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-white/5";
 const proseHeadings = "prose-headings:font-semibold prose-headings:border-b prose-headings:border-zinc-900 prose-headings:pb-2";
@@ -25,10 +29,11 @@ const Readme = ({ content }: { content: string }) => {
           "w-full px-12 py-16 !max-w-none",
           proseBase,
           proseCode,
-          proseHeadings
+          proseHeadings,
+          prosePre
         )}
       >
-        <Markdown rehypePlugins={[rehypeRaw]}>{content}</Markdown>
+        <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>{content}</Markdown>
       </div>
       <footer className="flex justify-between mt-auto text-sm border-t border-zinc-900">
         <div className="px-4 py-3">
