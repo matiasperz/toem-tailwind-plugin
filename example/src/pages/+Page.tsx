@@ -10,7 +10,7 @@ import * as Select from "@radix-ui/react-select";
 
 import "./App.css";
 import s from "./Components.module.css";
-import TailwindLogo from "../assets/tailwind.svg";
+import TailwindLogo from "../../public/tailwind.svg";
 import { useData } from "vike-react/useData";
 import { Readme } from "./Readme";
 
