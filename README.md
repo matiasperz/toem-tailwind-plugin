@@ -4,7 +4,7 @@ A Tailwind plugin for dynamically calculate `em` values.
 
 ## How to use it?
 
-![how to use it](https://assets.matiasperez.dev/toem-tailwind-plugin/how-to-use-it.png?v=2)
+![how to use it](https://assets.matiasperez.dev/toem-tailwind-plugin/how-to-use-it.png?v=3)
 
 Targeting 13px on a base of 16px will result in `13px/16px = 0.8125em`.
 ```html
@@ -20,4 +20,4 @@ Targeting 13px on a base of 16px will result in `13px/16px = 0.8125em`.
 ## Preview the result
 I highly recommend installing the [Tailwind IntelliSense plugin for VSCode](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), it will display the result of the dynamic calculation.
 
-![intellisense](https://assets.matiasperez.dev/toem-tailwind-plugin/intellisense.png?v=2)
+![intellisense](https://assets.matiasperez.dev/toem-tailwind-plugin/intellisense.png?v=3)
