@@ -8,6 +8,7 @@ import 'highlight.js/styles/github-dark.min.css';
 
 export { Readme };
 
+const proseImg = "prose-img:border prose-img:border-white/5 prose-img:rounded-lg" 
 const proseBase = "prose prose-invert prose-zinc prose-blue";
 const prosePre = "prose-pre:p-0"
 const proseCode =
@@ -27,6 +28,7 @@ const Readme = ({ content }: { content: string }) => {
       <div
         className={clsx(
           "w-full px-12 py-16 !max-w-none",
+          proseImg,
           proseBase,
           proseCode,
           proseHeadings,
