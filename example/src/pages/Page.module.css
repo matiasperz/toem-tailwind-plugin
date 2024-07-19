@@ -1,0 +1,313 @@
+.sidebar-link {
+  @apply text-base cursor-pointer flex justify-center gap-x-em-[8/16] items-center w-full text-white font-normal px-em-[12/16] py-em-[8/16] border border-zinc-900 bg-white/5 rounded-em-[8/16];
+}
+
+.sidebar-link.active {
+  @apply border-white;
+}
+
+.copy-button {
+  @apply inline-flex relative items-center justify-center size-em-[36/16] rounded-em-[8/16] border border-white/5 bg-zinc-900 text-white;
+
+  & svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &:nth-child(2) {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+  }
+
+  &.copy-button-copied {
+    svg {
+      animation: hide 1250ms forwards;
+
+      &:nth-child(2) {
+        animation: show 1250ms forwards 150ms;
+      }
+    }
+  }
+}
+
+.install-command-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 30%, #ffffff10 45%, #ffffff10 55%, transparent 70%);
+  transform: translateX(-100%);
+
+  &.install-command-bg-copied {
+    animation: install-command-bg 1000ms none ease-out;
+  }
+}
+
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  20% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  80% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  80% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+@keyframes install-command-bg {
+  0% {
+    transform: translateX(-100%) scale(1);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(150%) scale(1.5);
+  } 
+}
+
+.copy-button {
+  @apply inline-flex relative items-center justify-center size-em-[36/16] rounded-em-[8/16] border border-white/5 bg-zinc-900 text-white;
+
+  & svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &:nth-child(2) {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+  }
+
+  &.copy-button-copied {
+    svg {
+      animation: hide 1250ms forwards;
+
+      &:nth-child(2) {
+        animation: show 1250ms forwards 150ms;
+      }
+    }
+  }
+}
+
+.install-command-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 30%, #ffffff10 45%, #ffffff10 55%, transparent 70%);
+  transform: translateX(-100%);
+
+  &.install-command-bg-copied {
+    animation: install-command-bg 1000ms none ease-out;
+  }
+}
+
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  20% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  80% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  80% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+@keyframes install-command-bg {
+  0% {
+    transform: translateX(-100%) scale(1);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(150%) scale(1.5);
+  } 
+}
+
+.copy-button {
+  @apply inline-flex relative items-center justify-center size-em-[36/16] rounded-em-[8/16] border border-white/5 bg-zinc-900 text-white;
+
+  & svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &:nth-child(2) {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+  }
+
+  &.copy-button-copied {
+    svg {
+      animation: hide 1250ms forwards;
+
+      &:nth-child(2) {
+        animation: show 1250ms forwards 150ms;
+      }
+    }
+  }
+}
+
+.install-command-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 30%, #ffffff10 45%, #ffffff10 55%, transparent 70%);
+  transform: translateX(-100%);
+
+  &.install-command-bg-copied {
+    animation: install-command-bg 1000ms none ease-out;
+  }
+}
+
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  20% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  80% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  80% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+@keyframes install-command-bg {
+  0% {
+    transform: translateX(-100%) scale(1);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(150%) scale(1.5);
+  } 
+}

@@ -9,10 +9,14 @@ import {
 import * as Select from "@radix-ui/react-select";
 
 import "./App.css";
-import s from "./Components.module.css";
+import s from "./Page.module.css";
 import TailwindLogo from "../../public/tailwind.svg";
 import { useData } from "vike-react/useData";
 import { Readme } from "./Readme";
+import { ScalableQuoteExample } from "../examples/ScalableQuote";
+import { FluidTextExample } from "../examples/FluidText";
+import { CTAsExample } from "../examples/CTAs";
+import { ScalableContentExample } from "../examples/ScalableContent";
 
 export { Page };
 
@@ -28,7 +32,7 @@ type Context = { readme: string };
 
 function Page() {
   const ctx = useData<Context>();
-  const [activeExample, setActiveExample] = useState("readme");
+  const [activeTab, setActiveTab] = useState("readme");
   const [pkgManager, setPkgManager] =
     useState<(typeof pkgManagers)[number]>("npm");
   const [isCopied, setIsCopied] = useState(0);
@@ -47,13 +51,13 @@ function Page() {
 
   return (
     <div className="grid min-h-screen w-full grid-cols-[max-content_auto]">
-      <div className="sticky flex flex-col top-0 left-0 h-screen min-w-[350px] w-[20vw] border-r border-zinc-900">
+      <div className="sticky bg-black flex flex-col top-0 left-0 h-screen min-w-[350px] w-[20vw] border-r border-zinc-900">
         <div className="px-4 py-3 border-b border-zinc-900">
           <p className="text-lg font-medium">
             <span className="inline-flex items-center justify-center mr-2 border rounded-full bg-white/5 size-10 border-zinc-900">
               <img src={TailwindLogo} className="w-6" />
             </span>
-            <code className="inline-block">to-em</code> plugin
+            <code className="inline-block">toem</code> plugin
           </p>
         </div>
         <ul className="flex flex-col px-4 py-3 gap-y-3">
@@ -64,21 +68,29 @@ function Page() {
               label: "Introduction",
             },
             {
+              key: "ctas",
+              label: "CTAs",
+            },
+            {
               key: "quotes",
               label: "Scalable quote",
             },
             {
-              key: "viewport",
+              key: "fluid",
               label: "Fluid text",
+            },
+            {
+              key: "viewport",
+              label: "Viewport content",
             },
           ].map(({ key, label, icon }) => {
             return (
               <Fragment key={key}>
                 <li>
                   <button
-                    onClick={() => setActiveExample(key)}
+                    onClick={() => setActiveTab(key)}
                     className={clsx(s["sidebar-link"], {
-                      [s["active"]]: key === activeExample,
+                      [s["active"]]: key === activeTab,
                     })}
                   >
                     {icon} {label}
@@ -175,110 +187,16 @@ function Page() {
       </div>
 
       <div className="flex flex-col items-center justify-center p-10 leading-none gridbg gap-y-6">
-        {activeExample === "quotes" ? (
-          <div className="flex flex-col gap-y-6">
-            <div className="mx-auto space-y-4 text-xs max-w-max">
-              <p className="px-em-[16/16]">Extra Small</p>
-              <Quote />
-            </div>
-            <div className="mx-auto space-y-4 text-sm max-w-max">
-              <p className="px-em-[16/16]">Small</p>
-              <Quote />
-            </div>
-            <div className="mx-auto space-y-4 text-base max-w-max">
-              <p className="px-em-[16/16]">Base</p>
-              <Quote />
-            </div>
-            <div className="mx-auto space-y-4 text-lg max-w-max">
-              <p className="px-em-[16/16]">Large</p>
-              <Quote />
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
+        {activeTab === "ctas" ? <CTAsExample /> : <></>}
 
-        {activeExample === "viewport" ? (
-          <div className={s["viewport"]}>
-            <div className="text-em-[22/16] mx-auto max-w-em-[780/22] !space-y-em-[24/22]">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
+        {activeTab === "quotes" ? <ScalableQuoteExample /> : <></>}
 
-        {activeExample === "readme" ? <Readme content={ctx.readme} /> : <></>}
+        {activeTab === "fluid" ? <FluidTextExample /> : <></>}
+
+        {activeTab === "viewport" ? <ScalableContentExample /> : <></>}
+
+        {activeTab === "readme" ? <Readme content={ctx.readme} /> : <></>}
       </div>
     </div>
   );
 }
-
-const Quote = () => {
-  return (
-    <div className="flex bg-black flex-col items-start justify-center p-em-[24/16] mx-auto space-y-4 border max-w-max rounded-xl border-zinc-900">
-      <div className="flex flex-col items-center text-center xl:text-left space-y-em-[16/16] xl:flex-row xl:space-y-em-[0/1] xl:space-x-em-[16/16]">
-        <img
-          src="/steve-jobs.png"
-          alt="Steve Jobs"
-          width={120}
-          height={120}
-          className="w-em-[64/16] rounded-full"
-        />
-        <div>
-          <blockquote className="text-em-[24/16] max-xl:max-w-[32ch] text-pretty font-medium leading-tight">
-            "The only way to do great work is to love what you do."
-          </blockquote>
-          <p className="gap-x-em-[8/16] mt-em-[8/16]">
-            <span className="font-medium">Steve Jobs</span>
-            &nbsp;
-            <span className="text-gray-500 dark:text-gray-400">
-              Co-founder, Apple
-            </span>
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
