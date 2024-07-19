@@ -2,6 +2,7 @@ import { Quote } from '../components/Quote';
 import { Cta } from '../components/Cta';
 
 import s from './Examples.module.css'
+import { Share2Icon } from '@radix-ui/react-icons';
 
 export const ScalableContentExample = () => {
   return (
@@ -44,9 +45,10 @@ export const ScalableContentExample = () => {
           magnam aliquam quaerat voluptatem.
         </p>
 
-        <div className='flex justify-center gap-x-em-[12/16]'>
+        <div className='flex mt-em-[36/16] justify-center gap-x-em-[12/16]'>
           <Cta className='text-em-[12/16]' suffix="👍">Like</Cta>
           <Cta className='text-em-[12/16]' suffix="👎">Dislike</Cta>
+          <Cta className='text-em-[12/16]' suffix={<Share2Icon className='size-em-[18/16]' />}>Share</Cta>
         </div>
       </div>
     </div>
