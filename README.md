@@ -42,4 +42,4 @@ I highly recommend installing the [Tailwind IntelliSense plugin for VSCode](http
 ![intellisense](https://assets.matiasperez.dev/toem-tailwind-plugin/intellisense.png?v=3)
 
 ## Supported properties
-All the css properties that accept `em` units as values are supported, but if I missed one feel free to [open an issue](https://github.com/matiasperz/toem-tailwind-plugin/issues/new).
+All the Tailwind classes that target css properties that accept `em` units as values are supported, but if I missed one feel free to [open an issue](https://github.com/matiasperz/toem-tailwind-plugin/issues/new).

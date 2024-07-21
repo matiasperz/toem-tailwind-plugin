@@ -6,3 +6,9 @@
 
   @apply w-full;
 }
+
+@screen 2xl {
+  .viewport {
+    --base-viewport: 1920;
+  }
+}

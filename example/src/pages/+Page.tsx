@@ -17,6 +17,7 @@ import { ScalableQuoteExample } from "../examples/ScalableQuote";
 import { FluidTextExample } from "../examples/FluidText";
 import { CTAsExample } from "../examples/CTAs";
 import { ScalableContentExample } from "../examples/ScalableContent";
+import { Pill } from "../components/HelperPill";
 
 export { Page };
 
@@ -186,14 +187,52 @@ function Page() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center p-10 leading-none gridbg gap-y-6">
-        {activeTab === "ctas" ? <CTAsExample /> : <></>}
+      <div className="flex flex-col items-center justify-center p-16 leading-none gridbg gap-y-6">
+        {activeTab === "ctas" ? (
+          <>
+            <CTAsExample />
+            <Pill
+              githubUrl="https://github.com/matiasperz/toem-tailwind-plugin/blob/main/example/src/examples/CTAs.tsx"
+            />
+          </>
+        ) : (
+          <></>
+        )}
 
-        {activeTab === "quotes" ? <ScalableQuoteExample /> : <></>}
+        {activeTab === "quotes" ? (
+          <>
+            <ScalableQuoteExample />
+            <Pill
+              githubUrl="https://github.com/matiasperz/toem-tailwind-plugin/blob/main/example/src/examples/ScalableQuote.tsx"
+            />
+          </>
+        ) : (
+          <></>
+        )}
 
-        {activeTab === "fluid" ? <FluidTextExample /> : <></>}
+        {activeTab === "fluid" ? (
+          <>
+            <FluidTextExample />
+            <Pill
+              githubUrl="https://github.com/matiasperz/toem-tailwind-plugin/blob/main/example/src/examples/FluidText.tsx"
+              viewport
+            />
+          </>
+        ) : (
+          <></>
+        )}
 
-        {activeTab === "viewport" ? <ScalableContentExample /> : <></>}
+        {activeTab === "viewport" ? (
+          <>
+            <ScalableContentExample />
+            <Pill
+              githubUrl="https://github.com/matiasperz/toem-tailwind-plugin/blob/main/example/src/examples/ScalableContent.tsx"
+              viewport
+            />
+          </>
+        ) : (
+          <></>
+        )}
 
         {activeTab === "readme" ? <Readme content={ctx.readme} /> : <></>}
       </div>
