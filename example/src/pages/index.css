@@ -34,7 +34,6 @@ body {
   overscroll-behavior: none;
 }
 
-
 .gridbg {
   background-size: 40px 40px;
   background-image: radial-gradient(circle, #ffffff20 1px, rgba(0, 0, 0, 0) 1px);

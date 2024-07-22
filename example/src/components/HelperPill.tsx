@@ -16,8 +16,8 @@ export const Pill = ({
   githubUrl: string;
 }) => {
   return (
-    <div className="absolute text-white bottom-6">
-      <div className="flex items-center p-2 pr-5 bg-black border rounded-full gap-x-5 border-white/10 whitespace-nowrap">
+    <div className="absolute text-sm text-white bottom-6">
+      <div className="flex items-center p-1 pr-3 bg-black border rounded-full gap-x-5 border-white/10 whitespace-nowrap">
         {viewport && (
           <div className={linkClassName}>
             <div className={iconClassName}>
