@@ -2,8 +2,7 @@ const plugin = require('tailwindcss/plugin')
 
 /* https://github.com/tailwindlabs/tailwindcss/blob/next/packages/tailwindcss/src/utilities.ts */
 
-const DIVISION_REGEX =
-  /(\d+)(?:\/)(\d+)/ /* [number]/[number] separated by groups */
+const DIVISION_REGEX = /(\d+)(?:\/?)(\d*)/ /* [number]/[number] separated by groups */
 
 const buildPropsObject = (propOrProps, value) => {
   const targetProps = Array.isArray(propOrProps) ? propOrProps : [propOrProps]
@@ -67,20 +66,26 @@ const DYNAMIC_PROPS = [
   ['space-x', { selector: ':where(& > :not(:last-child))', props: ['margin-right'] }]
 ]
 
-const toemTailwindPlugin = plugin(({ matchUtilities }) => {
+const toemTailwindPlugin = ({
+  defaultBase = 16
+}) => plugin(({ matchUtilities, config }) => {
   DYNAMIC_PROPS.forEach((p) => {
     matchUtilities(
       {
         [p[0] + '-em']: (v) => {
           const divisionComps = DIVISION_REGEX.exec(v)
 
+          if (!divisionComps) {
+            return buildPropsObject(p[1], '/* toem() error: invalid arguments */')
+          }
+
           const isConfig = typeof p[1] === 'object' && !Array.isArray(p[1])
           const props = isConfig ? p[1].props : p[1]
           const selector = isConfig ? p[1].selector : null
+          const isSingleValue = divisionComps[1] && !divisionComps[2]
 
-          /* TODO: Improve this, p[1] is not allways the actual prop */
-          if (!divisionComps) {
-            return buildPropsObject(p[1], '/* toem() error: invalid division */')
+          if (isSingleValue) {
+            return buildPropsObject(props, `calc(${divisionComps[1]} / var(--toem-base, ${defaultBase}) * 1em)`)
           }
 
           const emValue = divisionComps[1] / divisionComps[2]
@@ -91,8 +96,11 @@ const toemTailwindPlugin = plugin(({ matchUtilities }) => {
             }
           }
 
-          return buildPropsObject(p[1], emValue + 'em')
+          return buildPropsObject(props, emValue + 'em')
         }
+      },
+      {
+        values: config('spacing'),
       }
     )
   })

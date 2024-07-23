@@ -14,9 +14,14 @@ Then you just need to import it and add it to the plugins array in your `tailwin
 import toemPlugin from 'toem-tailwind-plugin'
 
 export default {
-  /* ...your config goes here... */
+  /* ...your tailwind config goes here... */
   plugins: [
-    toemPlugin
+    toemPlugin(
+      {
+        /* Optional */
+        defaultBase: 16 /* Default value is: 16 */
+      }
+    )
   ]
 }
 ```

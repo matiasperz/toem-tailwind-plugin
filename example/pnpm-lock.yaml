@@ -84,7 +84,7 @@ devDependencies:
     version: 3.4.4
   toem-tailwind-plugin:
     specifier: ^0.0.3
-    version: 0.0.3
+    version: link:..
   typescript:
     specifier: ^5.2.2
     version: 5.5.2
@@ -3709,10 +3709,6 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
-
-  /toem-tailwind-plugin@0.0.3:
-    resolution: {integrity: sha512-76QSdorv1jzSjMI6z5+w+8dgyrToX6CgNFV1TVIH1PiOd2EWR6TXsGZFTYKa3s1hX/8maNHzLyp2hyYU3AA57Q==}
-    dev: true
 
   /totalist@3.0.1:
     resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
