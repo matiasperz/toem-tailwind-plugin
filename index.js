@@ -63,47 +63,91 @@ const DYNAMIC_PROPS = [
   ['inset-y', ['top', 'bottom']],
   /* TODO: This could be a function that receives the value so we can do complex calcs in it. */
   ['space-y', { selector: ':where(& > :not(:last-child))', props: ['margin-bottom'] }],
-  ['space-x', { selector: ':where(& > :not(:last-child))', props: ['margin-right'] }]
+  ['space-x', { selector: ':where(& > :not(:last-child))', props: ['margin-right'] }],
+  ['translate-x', '--tw-translate-x'],
+  ['translate-y', '--tw-translate-y'],
+  ['translate-z', '--tw-translate-z'],
+  ['scale-x', '--tw-scale-x'],
+  ['scale-y', '--tw-scale-y'],
+  ['scale-z', '--tw-scale-z'],
+  ['rotate-x', '--tw-rotate-x'],
+  ['rotate-y', '--tw-rotate-y'],
+  ['rotate-z', '--tw-rotate-z'],
+  ['skew-x', '--tw-skew-x'],
+  ['skew-y', '--tw-skew-y']
 ]
 
-const toemTailwindPlugin = ({
-  defaultBase = 16
-}) => plugin(({ matchUtilities, config }) => {
-  DYNAMIC_PROPS.forEach((p) => {
-    matchUtilities(
-      {
-        [p[0] + '-em']: (v) => {
-          const divisionComps = DIVISION_REGEX.exec(v)
+/*
+  For the transform we can maybe still use vars like --tw-translate-y-em and then
+  gather all by just doing:
 
-          if (!divisionComps) {
-            return buildPropsObject(p[1], '/* toem() error: invalid arguments */')
-          }
+  .translate-x-em-*,
+  .translate-y-em-*,
+  .translate-z-em-*,
+  .scale-x-em-*,
+  .scale-y-em-*,
+  .scale-z-em-*,
+  .rotate-x-em-*,
+  .rotate-y-em-*,
+  .rotate-z-em-*,
+  .skew-x-em-*,
+  .skew-y-em-* {
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-translate-z: 0;
+    --tw-scale-x: 0;
+    --tw-scale-y: 0;
+    --tw-scale-z: 0;
+    --tw-rotate-x: 0;
+    --tw-rotate-y: 0;
+    --tw-rotate-z: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
 
-          const isConfig = typeof p[1] === 'object' && !Array.isArray(p[1])
-          const props = isConfig ? p[1].props : p[1]
-          const selector = isConfig ? p[1].selector : null
-          const isSingleValue = divisionComps[1] && !divisionComps[2]
+    transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) translateZ(var(--tw-translate-z))
+  }
+*/
 
-          if (isSingleValue) {
-            return buildPropsObject(props, `calc(${divisionComps[1]} / var(--toem-base, ${defaultBase}) * 1em)`)
-          }
+const toemTailwindPlugin = plugin.withOptions(({defaultBase = 16}) => {
+  return ({ matchUtilities, config }) => {
+    
+    DYNAMIC_PROPS.forEach((p) => {
+      const isConfig = typeof p[1] === 'object' && !Array.isArray(p[1])
+      const selector = isConfig ? p[1].selector : null
+      const props = isConfig ? p[1].props : p[1]
 
-          const emValue = divisionComps[1] / divisionComps[2]
-
-          if (selector) {
-            return {
-              [selector]: buildPropsObject(props, emValue + 'em')
+      matchUtilities(
+        {
+          [p[0] + '-em']: (v) => {
+            const divisionComps = DIVISION_REGEX.exec(v)
+  
+            if (!divisionComps) {
+              return buildPropsObject(p[1], '/* toem() error: invalid arguments */')
             }
+  
+            const isSingleValue = divisionComps[1] && !divisionComps[2]
+  
+            if (isSingleValue) {
+              return buildPropsObject(props, `calc(${divisionComps[1]} / var(--toem-base, ${defaultBase}) * 1em)`)
+            }
+  
+            const emValue = divisionComps[1] / divisionComps[2]
+  
+            if (selector) {
+              return {
+                [selector]: buildPropsObject(props, emValue + 'em')
+              }
+            }
+  
+            return buildPropsObject(props, emValue + 'em')
           }
-
-          return buildPropsObject(props, emValue + 'em')
+        },
+        {
+          values: config('spacing'),
         }
-      },
-      {
-        values: config('spacing'),
-      }
-    )
-  })
+      )
+    })
+  }
 })
 
 module.exports = toemTailwindPlugin
