@@ -3,13 +3,14 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A Tailwind plugin for dynamically calculate em values.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "pnpm changeset publish",
-    "build": "pnpm changeset"
+    "change": "pnpm changeset",
+    "release": "pnpm changeset version",
+    "publish": "pnpm changeset publish"
   },
   "keywords": [
     "tailwind",
