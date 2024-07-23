@@ -25,9 +25,7 @@ export default {
     },
   },
   plugins: [
-    toemTailwindPlugin({
-      defaultBase: 16,
-    }),
+    toemTailwindPlugin,
     tailwindTypographyPlugin,
   ],
 };

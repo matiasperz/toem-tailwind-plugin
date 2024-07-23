@@ -108,7 +108,7 @@ const DYNAMIC_PROPS = [
   }
 */
 
-const toemTailwindPlugin = plugin.withOptions(({defaultBase = 16}) => {
+const toemTailwindPlugin = plugin.withOptions(({ defaultBase = 16 } = {}) => {
   return ({ matchUtilities, config }) => {
     
     DYNAMIC_PROPS.forEach((p) => {
