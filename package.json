@@ -8,9 +8,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "change": "pnpm changeset",
-    "release": "pnpm changeset version",
-    "publish": "pnpm changeset publish"
+    "pkg:change": "pnpm changeset",
+    "pkg:release": "pnpm changeset version",
+    "pkg:publish": "pnpm changeset publish"
   },
   "keywords": [
     "tailwind",
