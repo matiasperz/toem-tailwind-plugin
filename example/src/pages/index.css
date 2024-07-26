@@ -17,17 +17,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-  transition: color 0.25s ease;
-}
-
-a:hover {
-  color: #535bf2;
-} */
-
 body {
   margin: 0;
   min-height: 100vh;
@@ -37,4 +26,18 @@ body {
 .gridbg {
   background-size: 40px 40px;
   background-image: radial-gradient(circle, #ffffff20 1px, rgba(0, 0, 0, 0) 1px);
+}
+
+.formatted {
+  p {
+    line-height: 1.25em;
+  }
+  
+  code {
+    font-size: 0.8em;
+    padding: 0.025em 0.3em;
+    border-radius: 0.25em;
+  
+    @apply font-mono text-gray-300 border bg-zinc-900 border-white/5;
+  }  
 }

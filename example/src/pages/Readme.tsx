@@ -4,16 +4,10 @@ import rehypeHighlight from "rehype-highlight";
 import { ReaderIcon } from "@radix-ui/react-icons";
 import clsx from "clsx";
 
-import 'highlight.js/styles/github-dark.min.css';
+import "highlight.js/styles/github-dark.min.css";
+import { proseClassName } from "../lib/prose";
 
 export { Readme };
-
-const proseImg = "prose-img:border prose-img:min-w-0 prose-img:bg-zinc-900 prose-img:border-white/5 prose-img:rounded-lg prose-img:max-w-[512px]" 
-const proseBase = "prose prose-invert prose-zinc prose-blue";
-const prosePre = "prose-pre:p-0"
-const proseCode =
-  "prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-white/5";
-const proseHeadings = "prose-headings:font-semibold prose-headings:border-b prose-headings:border-zinc-900 prose-headings:pb-2";
 
 const Readme = ({ content }: { content: string }) => {
   return (
@@ -25,17 +19,10 @@ const Readme = ({ content }: { content: string }) => {
           </h1>
         </div>
       </header>
-      <div
-        className={clsx(
-          "w-full px-12 py-16 !max-w-none",
-          proseImg,
-          proseBase,
-          proseCode,
-          proseHeadings,
-          prosePre
-        )}
-      >
-        <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>{content}</Markdown>
+      <div className={clsx("w-full px-12 py-16 !max-w-none", proseClassName)}>
+        <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
+          {content}
+        </Markdown>
       </div>
       <footer className="flex justify-between mt-auto text-sm border-t border-zinc-900">
         <div className="px-4 py-3">
@@ -46,8 +33,17 @@ const Readme = ({ content }: { content: string }) => {
             matiasperz
           </a>
         </div>
-        <a href="https://github.com/matiasperz/toem-tailwind-plugin" rel="noopener" className="inline-flex items-center h-full px-4 transition-colors border-l border-zinc-900 hover:bg-white/5">
-          <svg width={20} height={20} viewBox="0 0 98 96"  xmlns="http://www.w3.org/2000/svg">
+        <a
+          href="https://github.com/matiasperz/toem-tailwind-plugin"
+          rel="noopener"
+          className="inline-flex items-center h-full px-4 transition-colors border-l border-zinc-900 hover:bg-white/5"
+        >
+          <svg
+            width={20}
+            height={20}
+            viewBox="0 0 98 96"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               fill-rule="evenodd"
               clip-rule="evenodd"

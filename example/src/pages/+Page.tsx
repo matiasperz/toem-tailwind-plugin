@@ -18,6 +18,7 @@ import { FluidTextExample } from "../examples/FluidText";
 import { CTAsExample } from "../examples/CTAs";
 import { ScalableContentExample } from "../examples/ScalableContent";
 import { Pill } from "../components/HelperPill";
+import { ScopedBaseScalableContentExample } from "../examples/ScopedBaseContent";
 
 export { Page };
 
@@ -84,6 +85,10 @@ function Page() {
               key: "viewport",
               label: "Viewport content",
             },
+            {
+              key: "scoped",
+              label: "Scoped base",
+            }
           ].map(({ key, label, icon }) => {
             return (
               <Fragment key={key}>
@@ -233,6 +238,15 @@ function Page() {
         ) : (
           <></>
         )}
+
+        {activeTab === "scoped" ? (
+          <>
+            <ScopedBaseScalableContentExample />
+            <Pill
+              githubUrl="https://github.com/matiasperz/toem-tailwind-plugin/blob/main/example/src/examples/ScopedBaseContent.tsx"
+            />
+          </>) : <></>
+        }
 
         {activeTab === "readme" ? <Readme content={ctx.readme} /> : <></>}
       </div>

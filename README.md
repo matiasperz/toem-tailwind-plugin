@@ -27,15 +27,36 @@ export default {
 ```
 
 ## How to use it?
+The `em` unit is relative to the font-size of its parent element as the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) defines it. These are kind of hard to guess its real computed value specially if you have numbers like
+`0.8125em`. This library allows you to define em values with Tailwind but in a much more declarative way like the example below 👇.
 
 ![how to use it](https://assets.matiasperez.dev/toem-tailwind-plugin/how-to-use-it.png?v=6)
+In this example we are aiming to set a padding of `8px` when the parent `font-size` is `16px` resulting in `13px/16px = 0.8125em`. Here's a code snippet using `toem-tailwind-plugin` in the wild. See? Much more explicit.
 
-Targeting 13px on a base of 16px will result in `13px/16px = 0.8125em`.
 ```html
 <div class="text-base flex items-center gap-x-em-[24/16]">
   <img class="size-em-[32/16]" src="..." alt="profile pic" />
 
   <p class="text-em-[13/16]">
+    Lorem Ipsum
+  </p>
+<div>
+```
+
+If you find yourself setting the same exact **base** value for large chunks of code, or if you want to make
+a whole block interoperable with multiple bases. You can use single value `-em` classes for that. 
+It results on a `calc()` function that inherits the **base** value from it's parent and defaults to
+your **base** value `defaultBase` on your plugin config. The `base-em` class sets a base value for the entire child block.
+
+![how to use it with single value](https://assets.matiasperez.dev/toem-tailwind-plugin/how-to-use-it-single-value.png?v=7)
+
+Here's the same example as before but using `base-em` class.
+
+```html
+<div class="text-base base-em-[16] flex items-center gap-x-em-[24]">
+  <img class="size-em-[32]" src="..." alt="profile pic" />
+
+  <p class="text-em-[13]">
     Lorem Ipsum
   </p>
 <div>

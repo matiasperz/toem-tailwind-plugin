@@ -1,3 +1,4 @@
+/** @type {import('toem-tailwind-plugin')} */
 import toemTailwindPlugin from "toem-tailwind-plugin";
 import tailwindTypographyPlugin from "@tailwindcss/typography";
 
@@ -21,11 +22,14 @@ export default {
       animation: {
         caret: "caret 1s infinite",
         heartbeat: "heartbeat 1s infinite",
-      },
-    },
+      }
+    }
   },
   plugins: [
-    toemTailwindPlugin,
+    toemTailwindPlugin({
+      autoBase: true,
+      defaultBase: 16
+    }),
     tailwindTypographyPlugin,
   ],
 };

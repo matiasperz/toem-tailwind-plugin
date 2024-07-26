@@ -3,7 +3,7 @@ import s from "./Examples.module.css";
 export const FluidTextExample = () => {
   return (
     <div className={s["viewport"]}>
-      <div className="text-em-[22/16] mx-auto max-w-em-[780/22] !space-y-em-[24/22]">
+      <div className="formatted text-em-[22/16] mx-auto max-w-em-[780/22] !space-y-em-[24/22]">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.
@@ -27,8 +27,7 @@ export const FluidTextExample = () => {
           ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
           dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
           sedquia non numquam eius modi tempora incidunt ut labore et dolore
-          magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-          nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+          magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
           aliquid ex ea commodi consequatur? Quis autem vel eum iure
           reprehenderit qui in ea voluptate velit esse quam nihil molestiae
           consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla

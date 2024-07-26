@@ -7,7 +7,7 @@ import { Share2Icon } from '@radix-ui/react-icons';
 export const ScalableContentExample = () => {
   return (
     <div className={s["viewport"]}>
-      <div className="text-em-[22/16] mx-auto max-w-em-[780/22] !space-y-em-[24/22]">
+      <div className="formatted text-em-[22/16] mx-auto max-w-em-[780/22] !space-y-em-[24/22]">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.
@@ -26,15 +26,6 @@ export const ScalableContentExample = () => {
           nisi ut aliquip ex ea commodo consequat duis aute irure. dolor in
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur.
-        </p>
-        
-        <p>
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-          officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde
-          omnis iste natus error sit voluptatem accusantium doloremque
-          laudantium. Totam rem aperiam, eaque ipsa quae ab illo inventore
-          veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-          enim ipsam voluptatem quia voluptas sit aspernatur.
         </p>
 
         <div className='flex mt-em-[36/16] justify-center gap-x-em-[12/16]'>

@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "pkg:change": "pnpm changeset",
     "pkg:release": "pnpm changeset version",
-    "pkg:publish": "pnpm changeset publish"
+    "pkg:publish": "pnpm changeset publish",
+    "dev": "cd example && pnpm run dev"
   },
   "keywords": [
     "tailwind",
