@@ -1,9 +1,9 @@
 const VERCEL_URL =
   // eslint-disable-next-line no-nested-ternary
-  process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
+  import.meta.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
     ? 'https://toem-tailwind-plugin.vercel.app'
-    : process.env.NEXT_PUBLIC_VERCEL_URL
-      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+    : import.meta.env.NEXT_PUBLIC_VERCEL_URL
+      ? `https://${import.meta.env.NEXT_PUBLIC_VERCEL_URL}`
       : '';
 
 const PUBLIC_URL = VERCEL_URL || 'http://localhost:3000';
