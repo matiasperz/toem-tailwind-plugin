@@ -7,9 +7,7 @@ const Page = () => {
   return (
     <>
       <CTAsExample />
-      <Pill
-      githubUrl="https://github.com/matiasperz/toem-tailwind-plugin/blob/main/example/src/examples/CTAs.tsx"
-      />
+      <Pill githubUrl="https://github.com/matiasperz/toem-tailwind-plugin/blob/main/example/src/examples/CTAs.tsx" />
     </>
-  )
-}
+  );
+};

@@ -8,6 +8,7 @@ import {
   ChevronDownIcon,
 } from "@radix-ui/react-icons";
 import * as Select from "@radix-ui/react-select";
+import { usePageContext } from "vike-react/usePageContext";
 
 import "./App.css";
 import s from "./Page.module.css";
@@ -25,7 +26,7 @@ const command = {
 const pkgManagers = Object.keys(command) as ("npm" | "pnpm" | "yarn")[];
 
 function Layout({ children }: { children: React.ReactNode }) {
-  const [activeTab, setActiveTab] = useState("readme");
+  const ctx = usePageContext();
   const [pkgManager, setPkgManager] =
     useState<(typeof pkgManagers)[number]>("npm");
   const [isCopied, setIsCopied] = useState(0);
@@ -92,9 +93,8 @@ function Layout({ children }: { children: React.ReactNode }) {
                 <li>
                   <a
                     href={href}
-                    onClick={() => setActiveTab(key)}
                     className={clsx(s["sidebar-link"], {
-                      [s["active"]]: key === activeTab,
+                      [s["active"]]: ctx.urlPathname === href,
                     })}
                   >
                     {icon} {label}
