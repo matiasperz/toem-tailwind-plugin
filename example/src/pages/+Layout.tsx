@@ -27,6 +27,7 @@ const pkgManagers = Object.keys(command) as ("npm" | "pnpm" | "yarn")[];
 
 function Layout({ children }: { children: React.ReactNode }) {
   const ctx = usePageContext();
+
   const [pkgManager, setPkgManager] =
     useState<(typeof pkgManagers)[number]>("npm");
   const [isCopied, setIsCopied] = useState(0);

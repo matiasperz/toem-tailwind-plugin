@@ -16,6 +16,8 @@ const Head = () => {
       <meta name="twitter:image" content={metadata.image} />
       <title>{metadata.title}</title>
       <meta property="description" content={metadata.description} />
+
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
     </>
   );
 };
