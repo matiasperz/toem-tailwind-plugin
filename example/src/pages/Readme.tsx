@@ -19,7 +19,7 @@ const Readme = ({ content }: { content: string }) => {
           </h1>
         </div>
       </header>
-      <div className={clsx("w-full px-12 py-16 !max-w-none", proseClassName)}>
+      <div className={clsx("w-full max-sm:text-sm px-6 py-10 md:px-9 md:py-12 lg:px-12 lg:py-16 !max-w-none", proseClassName)}>
         <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
           {content}
         </Markdown>
