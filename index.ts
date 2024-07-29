@@ -3,7 +3,7 @@ import plugin from "tailwindcss/plugin";
 /* https://github.com/tailwindlabs/tailwindcss/blob/next/packages/tailwindcss/src/utilities.ts */
 
 const DIVISION_REGEX =
-  /(?<dividend>\d+)(?:\/?)(?<divisor>\d*)/; /* [number]/[number] separated by groups */
+  /(?<dividend>-?\d+)(?:\/?)(?<divisor>-?\d*)/; /* [number]/[number] separated by groups */
 const INVALID_ERROR = "/* toem() error: invalid arguments */";
 
 const buildStylesObject = (
@@ -232,6 +232,8 @@ const toemTailwindPlugin = plugin.withOptions(
 
             return buildStylesObject(props, emValue, selector);
           },
+        }, {
+          supportsNegativeValues: true,
         });
       });
 
