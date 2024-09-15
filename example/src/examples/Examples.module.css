@@ -1,10 +1,22 @@
 .viewport {
-  --base-viewport: 1512;
+  --base-viewport: 460;
   --base-size: 16;
   --dynamic-base-size: calc(var(--base-size) / var(--base-viewport) * 100vw);
   font-size: var(--dynamic-base-size);
 
   @apply w-full;
+}
+
+@screen md {
+  .viewport {
+    --base-viewport: 768;
+  }
+}
+
+@screen lg {
+  .viewport {
+    --base-viewport: 1512;
+  }
 }
 
 @screen 2xl {

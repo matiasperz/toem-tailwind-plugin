@@ -3,6 +3,7 @@ import {
   ExitFullScreenIcon,
   GitHubLogoIcon,
 } from "@radix-ui/react-icons";
+import clsx from "clsx";
 
 const iconClassName =
   "flex items-center justify-center border rounded-full size-8 border-white/10";
@@ -19,7 +20,7 @@ export const Pill = ({
     <div className="absolute text-sm text-white bottom-6">
       <div className="flex items-center p-1 pr-3 bg-black border rounded-full gap-x-5 border-white/10 whitespace-nowrap">
         {viewport && (
-          <div className={linkClassName}>
+          <div className={clsx(linkClassName, "max-lg:hidden")}>
             <div className={iconClassName}>
               <ExitFullScreenIcon className="size-4" />
             </div>

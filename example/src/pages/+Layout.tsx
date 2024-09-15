@@ -211,7 +211,7 @@ const Sidebar = ({ className, mobile = false }: { className?: string, mobile?: b
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <Popover.Root>
-      <div className="fixed top-0 flex items-center w-full h-16 pr-4 bg-black border-b lg:hidden md:pr-8 border-zinc-900">
+      <div className="sticky top-0 flex items-center w-full h-16 pr-4 bg-black border-b lg:hidden md:pr-8 border-zinc-900">
         <Popover.Trigger className="relative flex items-center justify-center h-full border-r group border-zinc-900 aspect-square">
           <div className="absolute w-4 h-px -translate-y-1 bg-white group-data-[state=open]:translate-y-0 group-data-[state=open]:rotate-45" />
           <div className="absolute w-4 h-px translate-y-1 bg-white group-data-[state=open]:translate-y-0 group-data-[state=open]:-rotate-45" />
@@ -228,7 +228,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
       <div className="grid min-h-svh w-full grid-cols-1 lg:grid-cols-[max-content_auto]">
         <Sidebar className="max-lg:hidden" />
-        <div className="flex flex-col items-center justify-center p-3 leading-none lg:p-10 xl:p-16 gridbg gap-y-6">
+        <div className="flex flex-col items-center p-4 leading-none md:justify-center md:p-16 lg:p-10 xl:p-16 gridbg gap-y-6">
           {children}
         </div>
       </div>

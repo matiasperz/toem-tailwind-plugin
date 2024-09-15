@@ -2,8 +2,7 @@ import plugin from "tailwindcss/plugin";
 
 /* https://github.com/tailwindlabs/tailwindcss/blob/next/packages/tailwindcss/src/utilities.ts */
 
-const DIVISION_REGEX =
-  /(?<dividend>-?\d+)(?:\/?)(?<divisor>-?\d*)/; /* [number]/[number] separated by groups */
+const DIVISION_REGEX = /(-?\d+)(?:\/?)(-?\d*)/; /* [number]/[number] separated by groups */
 const INVALID_ERROR = "/* toem() error: invalid arguments */";
 
 const buildStylesObject = (
@@ -171,42 +170,27 @@ const toemTailwindPlugin = plugin.withOptions(
         matchUtilities({
           [identifier + "-em"]: (v) => {
             const divisionComps = DIVISION_REGEX.exec(v);
-            const comps = divisionComps?.groups as {
-              dividend: string;
-              divisor: string;
-            };
-            const numericComps = {
+            const comps = divisionComps ? {
+              dividend: divisionComps[1],
+              divisor: divisionComps[2]
+            } : null;
+            const numericComps = comps ? {
               dividend: parseInt(comps.dividend),
               divisor: parseInt(comps.divisor),
-            };
+            } : null;
 
-            if (!divisionComps) {
+            if (!divisionComps || !comps) {
               return buildStylesObject(props, INVALID_ERROR, selector);
             }
 
             const isSingleValue = Boolean(comps.dividend) && !comps.divisor;
 
-            // if (isSingleValue) {
-            //   const numericValue = parseInt(comps.dividend);
-
-            //   if (isNaN(numericValue)) {
-            //     return buildStylesObject(props, INVALID_ERROR, selector);
-            //   }
-
-            //   return buildStylesObject(
-            //     props,
-            //     `calc(${numericComps.dividend} / var(--toem-base, ${defaultBase}) * 1em)`,
-            //     selector
-            //   )
-            // }
-
             /* 
               1. Dividend is always required.
               2. Divisor is optional, but if it's present it must be a number.
             */
-            if (
-              isNaN(numericComps.dividend) ||
-              (!isSingleValue && isNaN(numericComps.divisor))
+            if (!numericComps || isNaN(numericComps.dividend) ||
+                (!isSingleValue && isNaN(numericComps.divisor))
             ) {
               return buildStylesObject(props, INVALID_ERROR, selector);
             }
