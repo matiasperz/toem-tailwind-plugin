@@ -1,0 +1,28 @@
+@reference "tailwindcss";
+
+.viewport {
+  --base-viewport: 460;
+  --base-size: 16;
+  --dynamic-base-size: calc(var(--base-size) / var(--base-viewport) * 100vw);
+  font-size: var(--dynamic-base-size);
+
+  @apply w-full;
+}
+
+@media (min-width: 768px) {
+  .viewport {
+    --base-viewport: 768;
+  }
+}
+
+@media (min-width: 1024px) {
+  .viewport {
+    --base-viewport: 1512;
+  }
+}
+
+@media (min-width: 1536px) {
+  .viewport {
+    --base-viewport: 1920;
+  }
+}
