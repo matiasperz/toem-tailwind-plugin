@@ -12,7 +12,7 @@ const buildStylesObject = (
 ) => {
   const targetProps = Array.isArray(propOrProps) ? propOrProps : [propOrProps];
 
-  const res = targetProps.reduce((acc, prop) => {
+  const res = targetProps.reduce<Record<string, string>>((acc, prop) => {
     acc[prop] = value;
     return acc;
   }, {});
