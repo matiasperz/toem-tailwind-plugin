@@ -1,5 +1,11 @@
 # toem-tailwind-plugin
 
+## 0.1.1
+
+### Patch Changes
+
+- d2d0959: Fix TypeScript error: add index signature to reduce accumulator in buildStylesObject
+
 ## 0.1.0
 
 ### Minor Changes
