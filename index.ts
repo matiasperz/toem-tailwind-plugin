@@ -141,7 +141,7 @@ const DYNAMIC_PROPS: DynamicProps = [
   }
 */
 
-const toemTailwindPlugin = plugin.withOptions(
+const toemTailwindPlugin: ReturnType<typeof plugin.withOptions<Config>> = plugin.withOptions(
   ({ defaultBase = 16, autoBase = false, customProps = [] }: Config = {}) => {
     return ({ matchUtilities }) => {
       const mergedProps = [

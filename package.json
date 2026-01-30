@@ -7,11 +7,9 @@
   "description": "A Tailwind plugin for dynamically calculate em values.",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pkg:change": "pnpm changeset",
-    "pkg:release": "pnpm changeset version",
-    "pkg:publish": "pnpm changeset publish",
-    "dev": "cd example && pnpm run dev"
+    "typecheck": "tsc --noEmit",
+    "version:package": "pnpm changeset version",
+    "release": "pnpm changeset publish"
   },
   "keywords": [
     "tailwind",

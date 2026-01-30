@@ -15,6 +15,6 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true
   },
-  "include": ["packages/**/*"],
+  "include": ["index.ts"],
   "exclude": ["node_modules", "dist"]
 }
