@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "toem-tailwind-plugin";
+
+@theme {
+  --animate-caret: caret 1s infinite;
+  --animate-heartbeat: heartbeat 1s infinite;
+
+  @keyframes caret {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.25);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: black;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overscroll-behavior: none;
+}
+
+.gridbg {
+  background-size: 40px 40px;
+  background-image: radial-gradient(
+    circle,
+    #ffffff20 1px,
+    rgba(0, 0, 0, 0) 1px
+  );
+}
+
+.formatted {
+  p {
+    line-height: 1.25em;
+  }
+
+  code {
+    font-size: 0.8em;
+    padding: 0.025em 0.3em;
+    border-radius: 0.25em;
+
+    @apply font-mono text-gray-300 border bg-zinc-900 border-white/5;
+  }
+}
