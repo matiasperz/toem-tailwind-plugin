@@ -2,7 +2,7 @@ import plugin from "tailwindcss/plugin";
 
 /* https://github.com/tailwindlabs/tailwindcss/blob/next/packages/tailwindcss/src/utilities.ts */
 
-const DIVISION_REGEX = /(-?\d+)(?:\/?)(-?\d*)/; /* [number]/[number] separated by groups */
+const DIVISION_REGEX = /^(-?\d*\.?\d+)(?:\/(-?\d*\.?\d*))?$/; /* [number](/[number]) — decimals and a leading minus supported */
 const INVALID_ERROR = "/* toem() error: invalid arguments */";
 
 const buildStylesObject = (
@@ -175,8 +175,8 @@ const toemTailwindPlugin: ReturnType<typeof plugin.withOptions<Config>> = plugin
               divisor: divisionComps[2]
             } : null;
             const numericComps = comps ? {
-              dividend: parseInt(comps.dividend),
-              divisor: parseInt(comps.divisor),
+              dividend: parseFloat(comps.dividend),
+              divisor: parseFloat(comps.divisor),
             } : null;
 
             if (!divisionComps || !comps) {
